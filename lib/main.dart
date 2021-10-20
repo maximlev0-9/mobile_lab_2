@@ -32,23 +32,25 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _topOptions = [
-    TopOption(name: "Daily Meditation", imageSrc: "img1"),
-    TopOption(name: "Timer", imageSrc: "img2"),
-    TopOption(name: "Downloads", imageSrc: "img3"),
-    TopOption(name: "Sleep", imageSrc: "img4"),
+    TopOption(name: "Daily Meditation"),
+    TopOption(name: "Timer"),
+    TopOption(name: "Downloads"),
+    TopOption(name: "Sleep"),
   ];
 
   final _middleOptions = [
     MiddleOption(
         name: "Getting Started",
         description: "A short intro",
-        imageSrc: "img2_1"),
+        imageSrc: "img1.jpg"),
     MiddleOption(
-        name: "Learning to Sit", description: "Step 1", imageSrc: "img2_2"),
+        name: "Learning to Sit", description: "Step 1", imageSrc: "img2.jpg"),
     MiddleOption(
-        name: "Mindfulness", description: "Step 2", imageSrc: "img2_3"),
+        name: "Mindfulness", description: "Step 2", imageSrc: "img3.jpg"),
     MiddleOption(
-        name: "Deepen Your Practice", description: "Step 3", imageSrc: "img2_4"),
+        name: "Deepen Your Practice",
+        description: "Step 3",
+        imageSrc: "img4.jpg"),
   ];
 
   @override
@@ -102,21 +104,27 @@ class _MyHomePageState extends State<MyHomePage> {
                     textAlign: TextAlign.start,
                   )),
               Container(
-                  height: elementHeight + 80,
+                  height: elementHeight + 100,
                   child: ListView(
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       children: _middleOptions
                           .map((option) => Padding(
-                                padding: EdgeInsets.all(20),
-                                child: Container(
+                                padding: const EdgeInsets.all(20),
+                                child: SizedBox(
                                   width: elementHeight + 0,
                                   child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                            child: Text(''),
+                                            padding: const EdgeInsets.symmetric(vertical: 5),
+                                            child: Image(
+                                              image: AssetImage(
+                                                'assets/' + option.imageSrc,
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
                                             // Image,
                                             height: elementHeight.toDouble()),
                                         Text(
@@ -142,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontSize: 20,
                       ))),
               Padding(
-                padding: EdgeInsets.fromLTRB(15,10,15,50),
+                padding: EdgeInsets.fromLTRB(15, 10, 15, 50),
                 child: Text(
                     '"If the doors of perception were cleansed, everything would appear to man as it is, infinite" - William Blake'),
               )
@@ -154,9 +162,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class TopOption {
   String name;
-  String imageSrc;
 
-  TopOption({required this.name, required this.imageSrc});
+  TopOption({required this.name});
 }
 
 class MiddleOption {
